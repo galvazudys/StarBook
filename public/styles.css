@@ -1,0 +1,12 @@
+#logo {
+  font-family: 'Nosifer', cursive;
+}
+
+#join {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 48, 25, 1) 31%,
+    rgba(207, 4, 4, 1) 92%
+  );
+  font-family: 'Cabin Sketch', cursive;
+}
