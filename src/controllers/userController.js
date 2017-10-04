@@ -10,10 +10,14 @@ export default {
   createNav(cb) {
     this.views.createHeader(cb);
   },
-  renderForm() {
-    this.views.renderForm();
+  renderForm(cb) {
+    this.createNav(app => {
+      this.views.renderForm(app, cb);
+    });
   },
-  renderHero(cb) {
-    this.views.renderHero(cb);
+  renderHero() {
+    this.createNav(app => {
+      this.views.renderHero(app);
+    });
   }
 };

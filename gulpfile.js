@@ -4,7 +4,7 @@ const babelify = require('babelify');
 const source = require('vinyl-source-stream');
 
 gulp.task('js', function() {
-  return browserify('./src/index.js')
+  return browserify('./src/index.js', { debug: true })
     .transform(babelify, {
       presets: ['es2015']
     })

@@ -50,3 +50,7 @@ p {
   padding: 5% 5%;
   font-family: 'Cabin Sketch', cursive;
 }
+
+#formAction {
+  margin-top: 60px;
+}
