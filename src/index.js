@@ -5,5 +5,9 @@ import view from './views/homePage';
 window.onload = () => {
   controller.setModel(user);
   controller.setViews(view);
-  controller.createNav();
+  var cb = app => {
+    console.log(app, 'bad');
+    controller.renderHero(app);
+  };
+  controller.createNav(cb);
 };

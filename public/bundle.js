@@ -70666,8 +70666,14 @@ exports.default = {
   setViews: function setViews(view) {
     this.views = view;
   },
-  createNav: function createNav() {
-    this.views.createHeader();
+  createNav: function createNav(cb) {
+    this.views.createHeader(cb);
+  },
+  renderForm: function renderForm() {
+    this.views.renderForm();
+  },
+  renderHero: function renderHero(cb) {
+    this.views.renderHero(cb);
   }
 };
 
@@ -70691,7 +70697,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 window.onload = function () {
   _userController2.default.setModel(_userModel2.default);
   _userController2.default.setViews(_homePage2.default);
-  _userController2.default.createNav();
+  var cb = function cb(app) {
+    console.log(app, 'bad');
+    _userController2.default.renderHero(app);
+  };
+  _userController2.default.createNav(cb);
 };
 
 },{"./controllers/userController":1049,"./models/userModel":1054,"./views/homePage":1055}],1051:[function(require,module,exports){
@@ -70922,13 +70932,25 @@ exports.default = user;
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.default = {
-    createHeader: function createHeader() {
-        var app = document.getElementById('app');
-        app.innerHTML = '<nav id="nav" class="navbar bg-info navbar-expand-lg navbar-light">\n        <a id="logo" class="navbar-brand" href="#">Bro)(Talks</a>\n        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">\n        <span class="navbar-toggler-icon"></span>\n        </button>\n        <div class="collapse navbar-collapse" id="navbarNav">\n        <ul class="navbar-nav">\n            <li class="nav-item active">\n            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>\n            </li>\n            <li class="nav-item">\n            <a class="nav-link" href="#">friends</a>\n            </li>\n            <li class="nav-item">\n            <a class="nav-link" href="#">Profile</a>\n            </li>\n        </ul>\n        </div>\n        <button id="join" class="btn  .col-md-3 .ml-md-auto">Join Now!</button>\n    </nav>';
-    }
+  app: '',
+  setApp: function setApp() {
+    this.app = document.getElementById('app');
+  },
+  createHeader: function createHeader(callback) {
+    app.innerHTML = '';
+    app.innerHTML = '<nav id="nav" class="navbar bg-info navbar-expand-lg navbar-light">\n        <a id="logo" class="navbar-brand" href="#">Bro)(Talks</a>\n        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">\n        <span class="navbar-toggler-icon"></span>\n        </button>\n        <div class="collapse navbar-collapse" id="navbarNav">\n        <ul class="navbar-nav">\n            <li class="nav-item active">\n            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>\n            </li>\n            <li class="nav-item">\n            <a class="nav-link" href="#">Friends</a>\n            </li>\n            <li class="nav-item">\n            <a class="nav-link" href="#">Profile</a>\n            </li>\n        </ul>\n        </div>\n        <button id="join" class="btn  .col-md-3 .ml-md-auto">Join Now!</button>\n    </nav>\n    </div>\n    ';
+    console.log(app);
+    callback(app);
+  },
+  renderHero: function renderHero(app) {
+    app.innerHTML += '    <div id="hero">\n    <div class="talk-bubble tri-right left-in">\n        <div class="talktext">\n        <p>Once i been like you,and then I <span id="bro">BRO)(TALK....</span></p>\n    </div>\n</div>';
+  },
+  renderForm: function renderForm() {
+    app.innerHTML += '\n    <div class="container">\n    <form>\n    <div class="form-group">\n      <label for="exampleInputEmail1">Email address</label>\n      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">\n      <small id="emailHelp" class="form-text text-muted">We\'ll never share your email with anyone else.</small>\n    </div>\n    <div class="form-group">\n      <label for="exampleInputPassword1">Password</label>\n      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">\n    </div>\n    <div class="form-check">\n      <label class="form-check-label">\n        <input type="checkbox" class="form-check-input">\n        Check me out\n      </label>\n    </div>\n    <button type="submit" class="btn btn-primary">Submit</button>\n  </form>\n  </div>\n  ';
+  }
 };
 
 },{}]},{},[1050]);
